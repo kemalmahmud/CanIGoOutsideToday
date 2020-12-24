@@ -70,18 +70,41 @@ function getLocation() {
     success: function(location) {
       // $('#country').html(location.country_name);
       // $('#state').html(location.state);
-      $('#city').html(location.city);
+      $('#city').html("City : " + location.city);
       lat = location.latitude
       long = location.longitude
       // $('#ip').html(location.IPv4);
 
-      getWeather();
+      getWeatherByCity(location.city);
     }
   });
 }
 
-function getWeather() {
-  var link = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=" + key;
+function getWeatherByLatLong(city) {
+  var link = "http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&units=metric&appid=" + key;
+  getWeather(link, city);
+}
+
+function getWeatherByCity(city) {
+  var link = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key;
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": link,
+    "method": "GET"
+  }
+  $.ajax(settings).done(function (response) {
+    lat = response.coord.lat;
+    long = response.coord.lon;
+    getWeatherByLatLong(response.name)
+  })
+  .fail(function(response) {
+    alert("City not found");
+    return;
+  });
+}
+
+function getWeather(link, cityName) {
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -90,10 +113,34 @@ function getWeather() {
   }
 
   $.ajax(settings).done(function (response) {
-    $('#weather').html(response.weather[0].main);
-    var videoFile = "video/" + response.weather[0].main + ".mp4";
-    //console.log(videoFile);
+    var dailyWeather = response.daily[0].weather[0];
+    var dailyTemp = response.daily[0].temp;
+    $('#city').html("City : " + cityName);
+    $('#weather').html("Weather : " + capitalizeFirstLetter(dailyWeather.description));
+    var videoFile = "video/" + dailyWeather.main + ".mp4";
     $('#myVideo source').attr('src', videoFile);
     $('#myVideo')[0].load();
+    $('#morningTemp').html("Morning : " + dailyTemp.morn + "&#8451;");
+    $('#dayTemp').html("Day : " + dailyTemp.day + "&#8451;");
+    $('#eveningTemp').html("Evening : " + dailyTemp.eve + "&#8451;");
+    $('#nightTemp').html("Night : " + dailyTemp.eve + "&#8451;");
+  });
+}
+
+
+function checkOtherCity() {
+  var city = $('#cityname').val();
+  getWeatherByCity(city);
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function showFormCheckCity() {
+  $( "#checkCity" ).fadeOut( "fast", function() {
+    $('#cityname').fadeIn();
+    $('#submitCheckCity').fadeIn();
+    $('#checkYourCity').fadeIn();
   });
 }
