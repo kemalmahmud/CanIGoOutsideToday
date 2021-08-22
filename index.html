@@ -6,23 +6,22 @@
         <title>Can I Go Outside Today</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel = "icon" href = "img/logo_title.png" 
+        type = "image/x-icon">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/fontAwesome.css">
         <link rel="stylesheet" href="css/hero-slider.css">
-        <link rel="stylesheet" href="css/templatemo-main.css">
+        <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/owl-carousel.css">
 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
-<!--
-Vanilla Template
-https://templatemo.com/tm-526-vanilla
--->
-<body>
+
+    <body>
 
     <div class="parallax-content baner-content" id="home">
         <video autoplay muted loop id="myVideo">
@@ -30,15 +29,15 @@ https://templatemo.com/tm-526-vanilla
         </video>
         <div class="container">
             <div class="first-content">
-                <span>Can I Go Outside Today?</span>
-                <div><span style="font-size: 25px;" id="city"></span></div>
-                <div><span style="font-size: 25px;" id="weather"></span></div>
-                <div><span style="font-size: 25px;" id="temperatureNote">Temperature Today :</span></div>
-                <div><span style="font-size: 20px; margin-left: 10px;" id="morningTemp"></span></div>
-                <div><span style="font-size: 20px; margin-left: 10px;" id="dayTemp"></span></div>
-                <div><span style="font-size: 20px; margin-left: 10px;" id="eveningTemp"></span></div>
-                <div><span style="font-size: 20px; margin-left: 10px;" id="nightTemp"></span></div>
-                <form id="check">
+                <span id="webTitle"><u>Check Your Today's Weather</u></span>
+                <div id="logoImg"><img src="img/logo_transparent.png"></div>
+                <div><span class='span1' id="city"></span></div>
+                <div><span class='span1' id="temperatureNote">Temperature Today :</span></div>
+                <div><span class='span2' id="morningTemp"></span></div>
+                <div><span class='span2' id="dayTemp"></span></div>
+                <div><span class='span2' id="eveningTemp"></span></div>
+                <div><span class='span2' id="nightTemp"></span></div>
+                <form id="check" style="margin-top: 50px"> 
                     <div class="row">
                         <div class="col-md-12">
                           <fieldset>
@@ -48,16 +47,17 @@ https://templatemo.com/tm-526-vanilla
                                 </fieldset>
                               </div>
                             <input name="cityname" type="text" class="form-control" id="cityname" placeholder="Your City Name" style="display: none">
-                            <div>
+                              <div>
                                 <fieldset>
                                   <a id="submitCheckCity" class="btn" style="display: none" onclick="checkOtherCity()">Check</a>
-                                  <a id="checkYourCity" class="btn" style="display: none">Check Your Location</a>
+                                  <a id="checkYourCity" class="btn" style="display: none" onclick="getLocation()">Your Location</a>
                                 </fieldset>
                               </div>
                           </fieldset>
                         </div>
                     </div>
                 </form>
+                <span id="weather"></span>
             </div>
         </div>
     </div>
@@ -67,17 +67,6 @@ https://templatemo.com/tm-526-vanilla
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        function openCity(cityName) {
-            var i;
-            var x = document.getElementsByClassName("city");
-            for (i = 0; i < x.length; i++) {
-               x[i].style.display = "none";  
-            }
-            document.getElementById(cityName).style.display = "block";  
-        }
-    </script>
-
     <script>
         $(document).ready(function(){
           // Add smooth scrolling to all links
@@ -104,8 +93,14 @@ https://templatemo.com/tm-526-vanilla
           });
 
           getLocation();
+
+          $('form').submit(function() { 
+              checkOtherCity();
+              return false;
+          });
+
         });
     </script>
 
-</body>
+    </body>
 </html>

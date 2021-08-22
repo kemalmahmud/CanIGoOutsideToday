@@ -80,6 +80,15 @@ function getLocation() {
   });
 }
 
+function openCity(cityName) {
+  var i;
+  var x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  document.getElementById(cityName).style.display = "block";  
+}
+
 function getWeatherByLatLong(city) {
   var link = "http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&units=metric&appid=" + key;
   getWeather(link, city);
@@ -116,7 +125,7 @@ function getWeather(link, cityName) {
     var dailyWeather = response.daily[0].weather[0];
     var dailyTemp = response.daily[0].temp;
     $('#city').html("City : " + cityName);
-    $('#weather').html("Weather : " + capitalizeFirstLetter(dailyWeather.description));
+    $('#weather').html(capitalizeFirstLetter(dailyWeather.description));
     var videoFile = "video/" + dailyWeather.main + ".mp4";
     $('#myVideo source').attr('src', videoFile);
     $('#myVideo')[0].load();
@@ -144,3 +153,4 @@ function showFormCheckCity() {
     $('#checkYourCity').fadeIn();
   });
 }
+

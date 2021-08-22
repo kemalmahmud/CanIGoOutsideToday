@@ -1,0 +1,202 @@
+p {
+  font-size: 15px;
+  line-height: 25px;
+}
+
+section {
+  padding: 25px 0 35px;
+  background: #fff;
+}
+
+body { 
+  position: relative; /* we need this for the scrollspy */ 
+  font-size: 14px;
+}
+
+a { color: #3CC; }
+
+a:hover { color: #FF0; }
+
+.primary-button a {
+  display: inline-block;
+  background-color: #ff7d27;
+  padding: 15px 24px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+
+.parallax-content {
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+}
+
+
+.baner-content {
+  padding-top: 0vh;
+  text-align: left;
+  /*background-image: url(../img/1st-section.jpg);*/
+  vertical-align: top;
+}
+
+.baner-content #myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  z-index: -1;
+}
+
+.baner-content h1 {
+  margin-top: 0px;
+  font-size: 128px;
+  color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
+
+#check input {
+  border-radius: 3px;
+  padding-left: 15px;
+  font-size: 13px;
+  color: #232323;
+  background-color: rgba(250, 250, 250, 1);
+  outline: none;
+  border: none;
+  box-shadow: none;
+  line-height: 50px;
+  height: 50px;
+  width: 30%;
+  margin-bottom: 10px;
+}
+
+#check a {
+  display: inline-block;
+  background-color: #ff7d27;
+  padding: 15px 24px;
+  width: 30%;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.baner-content em {
+  color: #ff7d27;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.baner-content span {
+  display: inline-block;
+  margin-top: 0px;
+  font-weight: 300;
+  font-size: 48px;
+  color: #fff;
+}
+
+.baner-content .span1 {
+  font-size: 25px;
+}
+
+.baner-content .span2 {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.baner-content .primary-button {
+  margin-top: 15px;
+}
+
+#weather {
+  margin-top: 100px;
+  font-size: 85px;
+  width: 100%;
+  text-align: center;
+}
+
+#logoImg {
+  margin-top: -10px;
+  float: left;
+  width: 300px;
+  height: 300px;
+  display: block;
+}
+
+/* Mobile */
+
+@media only screen and (max-width: 768px) {
+  #check input {
+    border-radius: 3px;
+    padding-left: 15px;
+    font-size: 13px;
+    color: #232323;
+    background-color: rgba(250, 250, 250, 1);
+    outline: none;
+    border: none;
+    box-shadow: none;
+    line-height: 50px;
+    height: 50px;
+    width: 40%;
+    margin-bottom: 10px;
+  }
+
+  #webTitle {
+    display: inline-block;
+    margin-top: 0px;
+    font-weight: 300;
+    font-size: 40px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  #weather {
+    display: inline-block;
+    text-align: center;
+    font-size: 40px;
+    width: 100%;
+  }
+
+  .baner-content .span1 {
+    font-size: 20px;
+  }
+  
+  .baner-content .span2 {
+    font-size: 15px;
+    margin-left: 15px;
+  }
+
+  #check a {
+    display: inline-block;
+    background-color: #ff7d27;
+    padding: 15px 24px;
+    width: 40%;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  #logoImg {
+    margin-top: -10px;
+    float: left;
+    width: 180px;
+    height: 180px;
+    display: block;
+  }
+}
